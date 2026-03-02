@@ -1,13 +1,16 @@
-def test_search_name(ctrl):
+def test_search_name(ctrl): # Тест поиска по названию
+    # Добавляем тестовые товары
     ctrl.add_product("Монитор ASUS", "Электроника", 5, 200)
     ctrl.add_product("Клавиатура", "Электроника", 10, 30)
-    res = ctrl.search(name="мон")
-    assert len(res) == 1
-    assert res[0]["name"] == "Монитор ASUS"
+    res = ctrl.search(name="мон")  # Ищем товары, содержащие "мон" в названии
+    assert len(res) == 1 # Должен найтись ровно 1 товар
+    assert res[0]["name"] == "Монитор ASUS" # Проверяем, что это нужный товар
 
-def test_search_category(ctrl):
-    ctrl.add_product("Стол", "Мебель", 3, 100)
+def test_search_category(ctrl): # Тест поиска по категории
+    # Добавляем тестовые товары
+    ctrl.add_product("Стол", "Мебель", 3, 100)  # Ищем товары в категории "мебель"
     ctrl.add_product("Стул", "Мебель", 4, 80)
     ctrl.add_product("Мышь", "Электроника", 15, 20)
     res = ctrl.search(category="мебель")
-    assert len(res) == 2
+    assert len(res) == 2 # Должно найтись 2 товара (Стол и Стул)
+    # Проверяем, что оба найденных товара имеют категорию "Мебель"
